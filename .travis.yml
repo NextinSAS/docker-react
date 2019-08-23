@@ -9,4 +9,18 @@ Script:
   - docker run nextinsas/docker-react npm run test -- --coverage
 #- docker run -e CI=true nextinsas/docker-react npm run test
 
+#Esta etiqueta le permite saber a travis que no va a tratar de verificar el codigo como el codigo predeterminadopor el, lo cual causaria un error
 language: generic
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-159675285749"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+  #Contraseña: xYdqohK'B7cV
