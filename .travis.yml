@@ -6,4 +6,5 @@ before_install:
   - docker build -t nextinsas/docker-react -f Dockerfile.dev .
 
 Script:
-  - docker run -e CI=true nextinsas/docker-react npm run test
+  - docker run nextinsas/docker-react npm run test -- --coverage
+#- docker run -e CI=true nextinsas/docker-react npm run test
